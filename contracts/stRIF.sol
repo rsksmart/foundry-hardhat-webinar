@@ -13,7 +13,7 @@ contract stRIF is ERC20 {
     /**
      * @notice Deploy USDRIF token with initial supply
      */
-    constructor() ERC20("USD RIF Token", "USDRIF") {}
+    constructor() ERC20("Staked RIF", "RIF") {}
     
     /**
      * @notice Allow anyone to mint tokens for testing purposes
