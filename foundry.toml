@@ -1,0 +1,32 @@
+[profile.default]
+# path settings
+broadcast = "foundry/broadcast"
+cache_path  = "foundry/cache_forge"
+libs = ["node_modules", "foundry/lib"]
+out = "foundry/out"
+script = "foundry/script"
+src = "contracts"
+test = "foundry/test"
+
+# compiler settings
+solc_version = "0.8.25"
+
+# optimzier settings
+optimizer = true
+optimizer_runs = 10_000
+
+# gas reports
+gas_reports = ["Faucet"]
+
+# remappings
+remappings = [
+    "solmate/=foundry/lib/solmate/",
+    "@openzeppelin/contracts/=foundry/lib/openzeppelin-contracts/contracts/"
+]
+
+# network settings
+[rpc_endpoints]
+localhost = "http://localhost:8545"
+sepolia = "https://ethereum-sepolia-rpc.publicnode.com"
+rootstock-testnet =""
+
