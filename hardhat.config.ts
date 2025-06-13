@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import '@nomicfoundation/hardhat-toolbox';
 import '@nomicfoundation/hardhat-foundry';
+import '@nomicfoundation/hardhat-verify';
 import { HardhatUserConfig } from 'hardhat/config';
 import chalk from 'chalk';
 import console from 'console';
@@ -13,6 +14,7 @@ const config: HardhatUserConfig = {
         version: '0.8.25',
         settings: {
           optimizer: {
+            evmVersion: 'cancun',
             enabled: true,
             runs: 10000
           }
@@ -36,22 +38,41 @@ const config: HardhatUserConfig = {
       chainId: 31337,
       url: 'http://localhost:8545'
     },
-    sepolia: {
-      url: 'https://ethereum-sepolia-rpc.publicnode.com',
-      chainId: 11155111,
-      accounts: getSepoliaPrivateKeys()
+    'rootstock-testnet': {
+      url: 'https://public-node.testnet.rsk.co',
+      chainId: 31,
+      accounts: getRootstockPrivateKeys()
     }
+  },
+  etherscan: {
+    apiKey: {
+      // Is not required by blockscout. Can be any non-empty string
+      'rootstock-testnet': ' '
+    },
+    customChains: [
+      {
+        network: 'rootstock-testnet',
+        chainId: 31,
+        urls: {
+          apiURL: 'https://rootstock-testnet.blockscout.com/api/',
+          browserURL: 'https://rootstock-testnet.blockscout.com/'
+        }
+      }
+    ]
+  },
+  sourcify: {
+    enabled: false
   }
 };
 
-function getSepoliaPrivateKeys(): string[] {
-  const sepoliaPrivateKeysEnv = process.env.SEPOLIA_PRIVATE_KEYS;
-  if (sepoliaPrivateKeysEnv === undefined) {
-    console.log(chalk.red('Env variable SEPOLIA_PRIVATE_KEY is not set'));
+function getRootstockPrivateKeys(): string[] {
+  const rootstockPrivateKeysEnv = process.env.PRIVATE_KEY;
+  if (rootstockPrivateKeysEnv === undefined) {
+    console.log(chalk.red('Env variable PRIVATE_KEY is not set'));
     process.exit();
   }
-  const sepoliaPrivateKeys = sepoliaPrivateKeysEnv.split(',');
-  return sepoliaPrivateKeys;
+  const rootstockPrivateKeys = rootstockPrivateKeysEnv.split(',');
+  return rootstockPrivateKeys;
 }
 
 export default config;

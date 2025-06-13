@@ -32,8 +32,8 @@ contract RootstockVaultTest is Test {
 
     function testDeployment() public view {
         assertEq(vault.asset(), address(stRifToken));
-        assertEq(vault.name(), "USD RIF Token Vault");
-        assertEq(vault.symbol(), "vUSDRIF");
+        assertEq(vault.name(), "Staked RIF Vault");
+        assertEq(vault.symbol(), "vRIF");
         assertEq(vault.decimals(), stRifToken.decimals());
     }
 

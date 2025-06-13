@@ -1,82 +1,93 @@
-# hardhat-foundry-starter-kit
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/rsksmart/foundry-hardhat-webinar/badge)](https://scorecard.dev/viewer/?uri=github.com/rsksmart/foundry-hardhat-webinar)
+[![CodeQL](https://github.com/rsksmart/foundry-hardhat-webinar/workflows/CodeQL/badge.svg)](https://github.com/rsksmart/foundry-hardhat-webinar/actions?query=workflow%3ACodeQL)
 
-This is an up-to-date template repository to develop using Foundry, Hardhat and Rootstock.
+# Hardhat & Foundry Starter Kit
 
-## General commands
+A modern template repository for developing smart contracts using **Foundry**, **Hardhat**, and **Rootstock**.
 
-## Setup Foundry for Rootstock
+---
 
-To set up the Foundry version that works with Rootstock run
+## Quick Start
+
+### Compile Contracts
+
+**With Hardhat:**
 
 ```bash
-chmod +x check_rust.sh
+bunx hardhat compile
 ```
 
-and then
+**With Foundry:**
 
 ```bash
-./rootstock-setup.sh
+forge build
 ```
 
-## Start local devnet
+---
 
-- with hardhat: `npx hardhat node`
-- with foundry: `anvil`
+### Run Tests
 
-## Basic Hardhat commands
+**With Hardhat:**
 
-1. Compile contract
+```bash
+bunx hardhat test
+```
 
-   ```bash
-   npx hardhat compile
-   ```
+**With Coverage Table:**
 
-1. Test contract
+```bash
+bunx hardhat coverage
+```
 
-   ```bash
-   npx hardhat test
+**With Foundry (Gas Report):**
 
-   # Test with coverage table
-   npx hardhat coverage
-   ```
+```bash
+forge test --gas-report
+```
 
-1. Deploy contract to local testnet
+**With Foundry (Coverage):**
 
-   ```bash
-   npx hardhat ignition deploy ignition/modules/* --network localhost
-   ```
+```bash
+forge coverage
+```
 
-## Basic Foundry commands
+---
 
-1. Compile contract
+### Deploy to Rootstock Testnet
 
-   ```bash
-   forge build
-   ```
+**With Hardhat Ignition:**
 
-1. Test contract
+```bash
+bunx hardhat ignition deploy ignition/modules/VaultModule.ts --network rootstock-testnet
+```
 
-   ```bash
-   # Test with gas-report output
-   forge test --gas-report
-   ```
+**With Foundry Script:**
 
-1. Get coverage table
+```bash
+forge script ./foundry/script/RootstockVault.s.sol --rpc-url https://public-node.testnet.rsk.co --broadcast 
+```
 
-   ```bash
-   forge coverage
-   ```
+### Verify to Rootstock Testnet
 
-1. Deploy contract to local testnet
+**stRIF**
 
-   ```bash
-   forge script ./foundry/script/Faucet.s.sol:FaucetDeploymentScript --rpc-url localhost --broadcast
-   ```
+```bash
+bunx hardhat verify --network rootstock-testnet <stRifAddress>
+```
+
+**Rootstock Vault**
+
+```bash
+bunx hardhat verify --network rootstock-testnet <RootstockVaultAddress> <stRifAddress>
+```
+
+---
+
 ## Support
 
 For any questions or support, please open an issue on the repository or reach out to the maintainers.
 
-# Disclaimer
+## Disclaimer
 
 The software provided in this GitHub repository is offered "as is," without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement.
 
@@ -88,3 +99,4 @@ The software provided in this GitHub repository is offered "as is," without warr
 - **Modification and Distribution:** This software may be modified and distributed under the terms of the license provided with the software. By modifying or distributing this software, you agree to be bound by the terms of the license.
 - **Assumption of Risk:** By using this software, the user acknowledges and agrees that they have read, understood, and accepted the terms of this disclaimer and assumes all risks associated with the use of this software.
 
+---

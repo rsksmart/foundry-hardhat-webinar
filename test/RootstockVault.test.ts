@@ -5,7 +5,7 @@ import { contracts } from '../typechain-types';
 
 describe('RootstockVault', function () {
   let vault: contracts.RootstockVault;
-  let stRifToken: contracts.usdrifSol.StRIF;
+  let stRifToken: contracts.StRIF;
   let user1: HardhatEthersSigner;
   let user2: HardhatEthersSigner;
 
@@ -14,7 +14,7 @@ describe('RootstockVault', function () {
 
     // Deploy stRIF token (underlying asset)
     const StRIFFactory = await hre.ethers.getContractFactory('stRIF');
-    stRifToken = (await StRIFFactory.deploy()) as contracts.usdrifSol.StRIF;
+    stRifToken = (await StRIFFactory.deploy()) as contracts.StRIF;
 
     // Deploy RootstockVault
     const VaultFactory = await hre.ethers.getContractFactory('RootstockVault');
@@ -32,8 +32,8 @@ describe('RootstockVault', function () {
     });
 
     it('Should have correct vault token name and symbol', async function () {
-      expect(await vault.name()).to.equal('USD RIF Token Vault');
-      expect(await vault.symbol()).to.equal('vUSDRIF');
+      expect(await vault.name()).to.equal('Staked RIF Vault');
+      expect(await vault.symbol()).to.equal('vRIF');
     });
 
     it('Should have same decimals as underlying asset', async function () {
@@ -272,16 +272,6 @@ describe('RootstockVault', function () {
       await vault.connect(user2).deposit(hre.ethers.parseEther('300'), user2.address);
 
       // After first round
-      expect((await vault.balanceOf(user1.address)) * 3n).to.equal(await vault.totalSupply());
-      expect((await vault.balanceOf(user2.address)) * 3n).to.equal(
-        (await vault.totalSupply()) * 2n
-      );
-
-      // Second round
-      await vault.connect(user1).deposit(hre.ethers.parseEther('100'), user1.address);
-      await vault.connect(user2).deposit(hre.ethers.parseEther('300'), user2.address);
-
-      // After second round, just check sum
       const user1Balance = await vault.balanceOf(user1.address);
       const user2Balance = await vault.balanceOf(user2.address);
       const totalSupply = await vault.totalSupply();

@@ -10,13 +10,14 @@ test = "foundry/test"
 
 # compiler settings
 solc_version = "0.8.25"
+evm_version = "cancun"
 
 # optimzier settings
 optimizer = true
 optimizer_runs = 10_000
 
 # gas reports
-gas_reports = ["Faucet"]
+gas_reports = ["RootstockVault"]
 
 # remappings
 remappings = [
@@ -28,5 +29,5 @@ remappings = [
 [rpc_endpoints]
 localhost = "http://localhost:8545"
 sepolia = "https://ethereum-sepolia-rpc.publicnode.com"
-rootstock-testnet =""
+rootstock-testnet ="https://public-node.testnet.rsk.co"
 
