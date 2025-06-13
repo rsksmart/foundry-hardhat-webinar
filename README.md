@@ -80,7 +80,7 @@ bunx hardhat verify --network rootstock-testnet <RootstockVaultAddress> <stRifAd
 
 ---
 
-## SupportAdd commentMore actions
+## Support
 
 For any questions or support, please open an issue on the repository or reach out to the maintainers.
 
