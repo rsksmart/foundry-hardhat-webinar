@@ -1,82 +1,90 @@
-# hardhat-foundry-starter-kit
+# Hardhat & Foundry Starter Kit
 
-This is an up-to-date template repository to develop using Foundry, Hardhat and Rootstock.
+A modern template repository for developing smart contracts using **Foundry**, **Hardhat**, and **Rootstock**.
 
-## General commands
+---
 
-## Setup Foundry for Rootstock
+## Quick Start
 
-To set up the Foundry version that works with Rootstock run
+### Compile Contracts
 
-```bash
-chmod +x check_rust.sh
-```
-
-and then
+**With Hardhat:**
 
 ```bash
-./rootstock-setup.sh
+bunx hardhat compile
 ```
 
-## Start local devnet
+**With Foundry:**
 
-- with hardhat: `npx hardhat node`
-- with foundry: `anvil`
+```bash
+forge build
+```
 
-## Basic Hardhat commands
+---
 
-1. Compile contract
+### Run Tests
 
-   ```bash
-   npx hardhat compile
-   ```
+**With Hardhat:**
 
-1. Test contract
+```bash
+bunx hardhat test
+```
 
-   ```bash
-   npx hardhat test
+**With Coverage Table:**
 
-   # Test with coverage table
-   npx hardhat coverage
-   ```
+```bash
+bunx hardhat coverage
+```
 
-1. Deploy contract to local testnet
+**With Foundry (Gas Report):**
 
-   ```bash
-   npx hardhat ignition deploy ignition/modules/* --network localhost
-   ```
+```bash
+forge test --gas-report
+```
 
-## Basic Foundry commands
+**With Foundry (Coverage):**
 
-1. Compile contract
+```bash
+forge coverage
+```
 
-   ```bash
-   forge build
-   ```
+---
 
-1. Test contract
+### Deploy to Rootstock Testnet
 
-   ```bash
-   # Test with gas-report output
-   forge test --gas-report
-   ```
+**With Hardhat Ignition:**
 
-1. Get coverage table
+```bash
+bunx hardhat ignition deploy ignition/modules/VaultModule.ts --network rootstock-testnet
+```
 
-   ```bash
-   forge coverage
-   ```
+**With Foundry Script:**
 
-1. Deploy contract to local testnet
+```bash
+forge script ./foundry/script/RootstockVault.s.sol --rpc-url https://public-node.testnet.rsk.co --broadcast 
+```
 
-   ```bash
-   forge script ./foundry/script/Faucet.s.sol:FaucetDeploymentScript --rpc-url localhost --broadcast
-   ```
-## Support
+### Verify to Rootstock Testnet
+
+**stRIF**
+
+```bash
+bunx hardhat verify --network rootstock-testnet <stRifAddress>
+```
+
+**Rootstock Vault**
+
+```bash
+bunx hardhat verify --network rootstock-testnet <RootstockVaultAddress> <stRifAddress>
+```
+
+---
+
+## SupportAdd commentMore actions
 
 For any questions or support, please open an issue on the repository or reach out to the maintainers.
 
-# Disclaimer
+## Disclaimer
 
 The software provided in this GitHub repository is offered "as is," without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement.
 
@@ -88,3 +96,4 @@ The software provided in this GitHub repository is offered "as is," without warr
 - **Modification and Distribution:** This software may be modified and distributed under the terms of the license provided with the software. By modifying or distributing this software, you agree to be bound by the terms of the license.
 - **Assumption of Risk:** By using this software, the user acknowledges and agrees that they have read, understood, and accepted the terms of this disclaimer and assumes all risks associated with the use of this software.
 
+---
