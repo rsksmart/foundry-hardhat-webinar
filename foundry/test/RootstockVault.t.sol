@@ -41,9 +41,9 @@ contract RootstockVaultTest is Test {
         vm.prank(user1);
         vault.deposit(100 ether, user1);
 
-        assertEq(vault.balanceOf(user1), 100 ther);
+        assertEq(vault.balanceOf(user1), 100 ether);
         assertEq(vault.totalAssets(), 100 ether);
-        assertEq(stRifToken.balanceOf(user1\), 900 ether);
+        assertEq(stRifToken.balanceOf(user1), 900 ether);
     }
 
     function testDepositZeroReverts() public {
