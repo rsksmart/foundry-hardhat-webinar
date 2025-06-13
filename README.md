@@ -1,3 +1,6 @@
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/rsksmart/foundry-hardhat-webinar/badge)](https://scorecard.dev/viewer/?uri=github.com/rsksmart/foundry-hardhat-webinar)
+[![CodeQL](https://github.com/rsksmart/foundry-hardhat-webinar/workflows/CodeQL/badge.svg)](https://github.com/rsksmart/foundry-hardhat-webinar/actions?query=workflow%3ACodeQL)
+
 # Hardhat & Foundry Starter Kit
 
 A modern template repository for developing smart contracts using **Foundry**, **Hardhat**, and **Rootstock**.
