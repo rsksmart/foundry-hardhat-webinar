@@ -32,8 +32,8 @@ contract RootstockVaultTest is Test {
 
     function testDeployment() public view {
         assertEq(vault.asset(), address(stRifToken));
-        assertEq(vault.name(), "USD RIF Token Vault");
-        assertEq(vault.symbol(), "vUSDRIF");
+        assertEq(vault.name(), "Staked RIF Vault");
+        assertEq(vault.symbol(), "vRIF");
         assertEq(vault.decimals(), stRifToken.decimals());
     }
 
@@ -41,9 +41,9 @@ contract RootstockVaultTest is Test {
         vm.prank(user1);
         vault.deposit(100 ether, user1);
 
-        assertEq(vault.balanceOf(user1), 100 ether);
+        assertEq(vault.balanceOf(user1), 100 ther);
         assertEq(vault.totalAssets(), 100 ether);
-        assertEq(stRifToken.balanceOf(user1), 900 ether);
+        assertEq(stRifToken.balanceOf(user1\), 900 ether);
     }
 
     function testDepositZeroReverts() public {
