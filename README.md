@@ -1,12 +1,12 @@
 # hardhat-foundry-starter-kit
 
-This is an up-to-date template repository to develop using foudry, hardhat and rootstock.
+This is an up-to-date template repository to develop using Foundry, Hardhat and Rootstock.
 
 ## General commands
 
-## Setup foudnry for rootstock
+## Setup Foundry for Rootstock
 
-To set up the foundry version that works with rootstock run
+To set up the Foundry version that works with Rootstock run
 
 ```bash
 chmod +x check_rust.sh
@@ -23,7 +23,7 @@ and then
 - with hardhat: `npx hardhat node`
 - with foundry: `anvil`
 
-## Basic hardhat commands
+## Basic Hardhat commands
 
 1. Compile contract
 
@@ -46,7 +46,7 @@ and then
    npx hardhat ignition deploy ignition/modules/* --network localhost
    ```
 
-## Basic foundry commands
+## Basic Foundry commands
 
 1. Compile contract
 
